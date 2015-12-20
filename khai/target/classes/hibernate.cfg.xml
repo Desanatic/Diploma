@@ -1,0 +1,13 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <mapping class = "com.khai.training.entity.Group"></mapping>
+        <mapping class = "com.khai.training.entity.Homework"></mapping>
+        <mapping class = "com.khai.training.entity.User"></mapping>
+        <mapping class = "com.khai.training.entity.Training"></mapping>
+        <mapping class = "com.khai.training.entity.Proverb"></mapping>
+        <mapping class = "com.khai.training.entity.Solution"></mapping>
+    </session-factory>
+</hibernate-configuration>
