@@ -24,13 +24,11 @@ public class SolutionBeanConstructor {
         return entityToBean(solutionRepository.get(solutionId));
     }
 
-    //ToDo
     private SolutionBean entityToBean(Solution bean){
         SolutionBean solutionBean = new SolutionBean();
         solutionBean.setId(bean.getId());
         solutionBean.setDecision(bean.getDecision());
         solutionBean.setChart(bean.getChart());
-        //solutionBean.setDateOfExecution(bean.getDateOfExecution());
         return solutionBean;
     }
 }

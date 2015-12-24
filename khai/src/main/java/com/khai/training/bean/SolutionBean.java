@@ -11,8 +11,7 @@ import java.util.Date;
 /**
  * Created by ������� on 19.11.2015.
  */
-public class SolutionBean implements Externalizable {
-    private Gson gson = new Gson();
+public class SolutionBean {
     private int id;
     private String chart;
     private String decision;
@@ -50,19 +49,4 @@ public class SolutionBean implements Externalizable {
         this.dateOfExecution = dateOfExecution;
     }
 
-    @Override
-    public void writeExternal(ObjectOutput out) throws IOException {
-        out.writeUTF(gson.toJson(this.id));
-        out.writeUTF(gson.toJson(this.chart));
-        out.writeUTF(gson.toJson(this.decision));
-        out.writeUTF(gson.toJson(this.dateOfExecution));
-    }
-
-    @Override
-    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        this.id = gson.fromJson(in.readUTF(),Integer.class);
-        this.chart = gson.fromJson(in.readUTF(),String.class);
-        this.decision = gson.fromJson(in.readUTF(),String.class);
-        this.dateOfExecution = gson.fromJson(in.readUTF(),Date.class);
-    }
 }

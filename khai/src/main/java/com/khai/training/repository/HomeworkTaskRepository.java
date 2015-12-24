@@ -22,8 +22,8 @@ public class HomeworkTaskRepository {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public User get(Integer id){
-        return  (User) sessionFactory.openSession().get(HomeworkTask.class, id);
+    public HomeworkTask get(Integer id){
+        return  (HomeworkTask) sessionFactory.openSession().get(HomeworkTask.class, id);
     }
 
 
@@ -33,8 +33,8 @@ public class HomeworkTaskRepository {
 
     public HomeworkTask get(Integer homeworkId, Integer userId) {
         Criteria crit = sessionFactory.getCurrentSession().createCriteria(HomeworkTask.class);
-        crit.add(Restrictions.eq("homework_id", homeworkId));
-        crit.add(Restrictions.eq("user_id", userId));
+        crit.add(Restrictions.eq("homeworkId", homeworkId));
+        crit.add(Restrictions.eq("userId", userId));
         if (!crit.list().isEmpty()) {
             return (HomeworkTask) crit.list().get(0);
         }

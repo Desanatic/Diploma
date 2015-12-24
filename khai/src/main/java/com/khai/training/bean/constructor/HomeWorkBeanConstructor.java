@@ -25,6 +25,9 @@ public class HomeWorkBeanConstructor {
     private SolutionRepository solutionRepository;
     @Autowired
     private UserHomeworkRepository userHomeworkRepository;
+    @Autowired
+    private HomeworkTaskRepository homeworkTaskRepository;
+
 
     public List<HomeworkBean> getAllByUserId(int userId) {
         List<HomeworkBean> homeworkBeans = new ArrayList<>();
@@ -34,7 +37,8 @@ public class HomeWorkBeanConstructor {
             Homework homework = homeworkRepository.get(userHomeWork.getHomeworkId());
             Training training = trainingRepository.get(homework.getTrainingId());
             Solution solution = solutionRepository.getByHomeworkId(homework.getId());
-            homeworkBeans.add(entityToBean(homework, training, solution));
+            HomeworkTask homeworkTask = homeworkTaskRepository.get(userHomeWork.getHomeworkTaskId());
+            homeworkBeans.add(entityToBean(homework, training, solution,homeworkTask));
         }
 
         return homeworkBeans;
@@ -58,14 +62,20 @@ public class HomeWorkBeanConstructor {
         return homeworkBean.getState().equals(state);
     }
 
-    private HomeworkBean entityToBean(Homework homework, Training training, Solution solution) {
+    private HomeworkBean entityToBean(Homework homework, Training training, Solution solution, HomeworkTask homeworkTask) {
         HomeworkBean homeworkBean = new HomeworkBean();
         homeworkBean.setHomeWorkId(homework.getId());
         homeworkBean.setHomeWorkName(homework.getName());
         homeworkBean.setTrainingId(homework.getTrainingId());
         homeworkBean.setTrainingName(training.getTrainingName());
-        homeworkBean.setAssessment(solution.getAssessment());
         homeworkBean.setDateOfDelivery(homework.getDateOfDelivery());
+        homeworkBean.setState(homeworkTask.getState());
+        homeworkBean.setTaskId(homeworkTask.getId());
+        if(solution != null){
+            homeworkBean.setAssessment(solution.getAssessment());
+        }else{
+            homeworkBean.setAssessment(0);
+        }
         return homeworkBean;
     }
 

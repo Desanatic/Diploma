@@ -26,7 +26,7 @@ public class TaskBeanConstructor {
     @Autowired
     private TrainingRepository trainingRepository;
 
-//ToDo
+//ToDo homeWorkId на task id
     public TaskBean get(int homeWorkId){
         Homework homework = homeworkRepository.get(homeWorkId);
         Training training = trainingRepository.get(homework.getTrainingId());

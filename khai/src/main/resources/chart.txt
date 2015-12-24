@@ -1,0 +1,18 @@
+<div id="task0" class="col-sm-6"><script>var data0 =  {
+  labels: ['1', '2', '3', '4', '5', '6'],
+  series: [
+    {
+      data: [1, 2, 3, 5, 8, 13]
+    }
+  ]
+}; new Chartist.Line('#task0', data0);</script></div>
+
+
+{
+  labels: ['1', '2', '3', '4', '5', '6'],
+  series: [
+    {
+      data: [1, 2, 3, 5, 8, 13]
+    }
+  ]
+}; 

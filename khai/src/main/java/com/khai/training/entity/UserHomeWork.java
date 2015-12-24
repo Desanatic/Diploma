@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user_home_work")
 public class UserHomeWork {
+
     @Id
     @Column(name = "id")
     @GeneratedValue
@@ -18,6 +19,9 @@ public class UserHomeWork {
 
     @Column(name = "home_work_id")
     private Integer homeworkId;
+
+    @Column(name = "home_work_task_id")
+    private Integer homeworkTaskId;
 
     @Column(name = "training_id")
     private Integer trainingId;
@@ -38,6 +42,14 @@ public class UserHomeWork {
         this.userId = userId;
     }
 
+    public Integer getHomeworkId() {
+        return homeworkId;
+    }
+
+    public void setHomeworkId(Integer homeworkId) {
+        this.homeworkId = homeworkId;
+    }
+
     public Integer getTrainingId() {
         return trainingId;
     }
@@ -46,11 +58,11 @@ public class UserHomeWork {
         this.trainingId = trainingId;
     }
 
-    public Integer getHomeworkId() {
-        return homeworkId;
+    public Integer getHomeworkTaskId() {
+        return homeworkTaskId;
     }
 
-    public void setHomeworkId(Integer homeworkId) {
-        this.homeworkId = homeworkId;
+    public void setHomeworkTaskId(Integer homeworkTaskId) {
+        this.homeworkTaskId = homeworkTaskId;
     }
 }
