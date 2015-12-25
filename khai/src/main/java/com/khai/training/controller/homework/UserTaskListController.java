@@ -1,9 +1,9 @@
-package com.khai.training.controller.get;
+package com.khai.training.controller.homework;
 
 import com.khai.training.bean.HomeworkBean;
 import com.khai.training.entity.User;
 import com.khai.training.entity.util.HomeworkState;
-import com.khai.training.repository.manager.RepositoryManager;
+import com.khai.training.repository.manager.RepositoryReadManager;
 import com.khai.training.util.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,7 @@ import java.util.Map;
 @Controller
 public class UserTaskListController {
     @Autowired
-    private RepositoryManager repositoryManager;
+    private RepositoryReadManager repositoryReadManager;
 
 
     @RequestMapping(value = "home_work_list", method = RequestMethod.GET)
@@ -36,7 +36,7 @@ public class UserTaskListController {
     @ResponseBody
     Map<String, List<HomeworkBean>> init(HttpServletRequest request, HttpServletResponse response) {
         User user = (User) request.getSession().getAttribute("user");
-        List<HomeworkBean> homeworkBeen = repositoryManager.getHomeworkBeans(user.getId());
+        List<HomeworkBean> homeworkBeen = repositoryReadManager.getHomeworkBeans(user.getId());
 
         return getHomeworkBeanMap(homeworkBeen);
     }

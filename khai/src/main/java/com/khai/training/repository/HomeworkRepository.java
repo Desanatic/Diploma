@@ -41,7 +41,7 @@ public class HomeworkRepository {
         return new ArrayList<>();
     }
 
-    public void updateById(Homework homework){
+    public void update(Homework homework){
         sessionFactory.getCurrentSession().update(homework);
     }
 

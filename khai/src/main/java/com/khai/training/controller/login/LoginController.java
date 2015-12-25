@@ -1,4 +1,4 @@
-package com.khai.training.controller.post;
+package com.khai.training.controller.login;
 
 import com.khai.training.entity.User;
 import com.khai.training.repository.UserRepository;

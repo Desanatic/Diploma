@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Vladyslav_Dubinin on 25.12.2015.
  */
 @Component
-public class RepositoryManager {
+public class RepositoryReadManager {
     private List<UserHomeWorkBean> userHomeWorkBeanList;
     @Autowired
     private EntityManager entityManager;

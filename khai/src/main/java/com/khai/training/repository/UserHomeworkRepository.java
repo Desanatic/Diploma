@@ -24,6 +24,24 @@ public class UserHomeworkRepository {
         return this.sessionFactory.getCurrentSession().createQuery("from UserHomeWorkBean").list();
     }
 
+    public UserHomeWork getByTaskId(Integer taskId){
+        Criteria crit = sessionFactory.getCurrentSession().createCriteria(UserHomeWork.class);
+        crit.add(Restrictions.eq("homeworkTaskId", taskId));
+        if(!crit.list().isEmpty()){
+            return (UserHomeWork) crit.list().get(0);
+        }
+        return null;
+    }
+
+    public UserHomeWork getBySolutionId(Integer solutionId){
+        Criteria crit = sessionFactory.getCurrentSession().createCriteria(UserHomeWork.class);
+        crit.add(Restrictions.eq("solutionId", solutionId));
+        if(!crit.list().isEmpty()){
+            return (UserHomeWork) crit.list().get(0);
+        }
+        return null;
+    }
+
     public List<UserHomeWork> getByUserId(Integer userId){
         Criteria crit = sessionFactory.getCurrentSession().createCriteria(UserHomeWork.class);
         crit.add(Restrictions.eq("userId", userId));

@@ -1,12 +1,11 @@
-package com.khai.training.controller.get;
+package com.khai.training.controller.homework;
 
 import com.khai.training.bean.SolutionBean;
 import com.khai.training.bean.TaskBean;
 import com.khai.training.entity.User;
-import com.khai.training.repository.manager.RepositoryManager;
+import com.khai.training.repository.manager.RepositoryReadManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UserHomeworkController {
     //ToDo Смерть приложухи при обновлении страницы
     @Autowired
-    private RepositoryManager repositoryManager;
+    private RepositoryReadManager repositoryReadManager;
 
     @RequestMapping(value = "home_work", method = RequestMethod.GET)
     public String getPage() {
@@ -34,7 +33,7 @@ public class UserHomeworkController {
     @ResponseBody
     TaskBean initialTask(HttpServletResponse response, HttpServletRequest request, @RequestParam int id) {
         User user = (User) request.getSession().getAttribute("user");
-        TaskBean taskBean = repositoryManager.getTaskBeanById(user.getId(), id);
+        TaskBean taskBean = repositoryReadManager.getTaskBeanById(user.getId(), id);
         response.addHeader("contentType", "application/json");
         response.setStatus(HttpServletResponse.SC_OK);
         return taskBean;
@@ -45,7 +44,7 @@ public class UserHomeworkController {
     @ResponseBody
     SolutionBean initialSolution(HttpServletResponse response, HttpServletRequest request, @RequestParam int id) {
         User user = (User) request.getSession().getAttribute("user");
-        SolutionBean solutionBean = repositoryManager.getSolutionBeanById(user.getId(), id);
+        SolutionBean solutionBean = repositoryReadManager.getSolutionBeanById(user.getId(), id);
         response.addHeader("contentType", "application/json");
         response.setStatus(HttpServletResponse.SC_OK);
         return solutionBean;

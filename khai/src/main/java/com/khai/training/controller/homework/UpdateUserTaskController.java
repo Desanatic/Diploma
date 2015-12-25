@@ -1,4 +1,4 @@
-package com.khai.training.controller.post;
+package com.khai.training.controller.homework;
 
 import com.khai.training.bean.SolutionBean;
 import com.khai.training.bean.TaskBean;
@@ -6,6 +6,7 @@ import com.khai.training.entity.Homework;
 import com.khai.training.entity.HomeworkTask;
 import com.khai.training.repository.HomeworkRepository;
 import com.khai.training.repository.HomeworkTaskRepository;
+import com.khai.training.repository.manager.RepositoryWriteManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,8 @@ import java.util.regex.Pattern;
 @Controller
 public class UpdateUserTaskController {
     @Autowired
+    private RepositoryWriteManager repositoryWriteManager;
+    @Autowired
     private HomeworkRepository repository;
     @Autowired
     private HomeworkTaskRepository homeworkTaskRepository;
@@ -33,12 +36,7 @@ public class UpdateUserTaskController {
                             @RequestParam String valueChart,
                             @RequestParam int id) {
 
-        //ToDo
-        //HomeworkTask homeworkTask = homeworkTaskRepository.get(id);
-        Homework homework = repository.get(id);
-        //homework.setTask(valueTask);
-       // homework.setChart(trimChart(valueChart));
-        repository.updateById(homework);
+        repositoryWriteManager.updateTask(id, valueChart, valueTask);
         response.addHeader("contentType", "application/json");
         response.setStatus(HttpServletResponse.SC_OK);
     }
@@ -49,7 +47,7 @@ public class UpdateUserTaskController {
                                     @RequestParam String valueTask,
                                     @RequestParam String valueChart,
                                     @RequestParam int id) {
-        //ToDo add implementation
+        repositoryWriteManager.updateSolution(id, valueChart, valueTask);
         response.addHeader("contentType", "application/json");
         response.setStatus(HttpServletResponse.SC_OK);
     }

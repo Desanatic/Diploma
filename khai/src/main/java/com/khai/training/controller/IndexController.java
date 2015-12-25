@@ -1,4 +1,4 @@
-package com.khai.training.controller.get;
+package com.khai.training.controller;
 
 import com.khai.training.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

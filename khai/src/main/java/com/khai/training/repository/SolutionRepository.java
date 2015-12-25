@@ -1,6 +1,7 @@
 package com.khai.training.repository;
 
 
+import com.khai.training.entity.HomeworkTask;
 import com.khai.training.entity.Solution;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
@@ -30,5 +31,9 @@ public class SolutionRepository {
             return (Solution) crit.list().get(0);
         }
         return null;
+    }
+
+    public void update(Solution solution){
+        sessionFactory.getCurrentSession().update(solution);
     }
 }

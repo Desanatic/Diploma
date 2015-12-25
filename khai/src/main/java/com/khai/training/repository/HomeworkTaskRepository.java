@@ -1,9 +1,6 @@
 package com.khai.training.repository;
 
-import com.khai.training.entity.HomeworkTask;
-import com.khai.training.entity.Proverb;
-import com.khai.training.entity.Solution;
-import com.khai.training.entity.User;
+import com.khai.training.entity.*;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -39,5 +36,9 @@ public class HomeworkTaskRepository {
             return (HomeworkTask) crit.list().get(0);
         }
         return null;
+    }
+
+    public void update(HomeworkTask homeworkTask){
+        sessionFactory.getCurrentSession().update(homeworkTask);
     }
 }
