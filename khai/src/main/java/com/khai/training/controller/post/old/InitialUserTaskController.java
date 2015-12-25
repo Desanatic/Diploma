@@ -2,8 +2,6 @@ package com.khai.training.controller.post.old;
 
 import com.khai.training.bean.SolutionBean;
 import com.khai.training.bean.TaskBean;
-import com.khai.training.bean.constructor.SolutionBeanConstructor;
-import com.khai.training.bean.constructor.TaskBeanConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class InitialUserTaskController {
-    private SolutionBeanConstructor solutionBeanConstructor;
+    /*private SolutionBeanConstructor solutionBeanConstructor;
     private TaskBeanConstructor taskBeanConstructor;
 
     @Autowired
@@ -44,6 +42,6 @@ public class InitialUserTaskController {
         response.addHeader("contentType", "application/json");
         response.setStatus(HttpServletResponse.SC_OK);
         return solutionBean;
-    }
+    }*/
 
 }

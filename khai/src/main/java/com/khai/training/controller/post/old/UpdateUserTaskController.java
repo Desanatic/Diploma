@@ -2,8 +2,6 @@ package com.khai.training.controller.post.old;
 
 import com.khai.training.bean.SolutionBean;
 import com.khai.training.bean.TaskBean;
-import com.khai.training.bean.constructor.SolutionBeanConstructor;
-import com.khai.training.bean.constructor.TaskBeanConstructor;
 import com.khai.training.entity.Homework;
 import com.khai.training.entity.HomeworkTask;
 import com.khai.training.repository.HomeworkRepository;
@@ -24,7 +22,7 @@ import java.util.regex.Pattern;
  */
 @Controller
 public class UpdateUserTaskController {
-    @Autowired
+    /*@Autowired
     private HomeworkRepository repository;
     @Autowired
     private HomeworkTaskRepository homeworkTaskRepository;
@@ -69,5 +67,5 @@ public class UpdateUserTaskController {
 
 
         return result;
-    }
+    }*/
 }

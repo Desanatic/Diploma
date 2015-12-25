@@ -1,7 +1,6 @@
 package com.khai.training.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Created by ������� on 11.11.2015.
@@ -14,12 +13,6 @@ public class Solution {
     @Column(name = "id")
     @GeneratedValue
     private Integer id;
-
-    @Column(name = "homework_id")
-    private Integer homeworkId;
-
-    @Column(name = "user_id")
-    private Integer userId;
 
     @Column(name = "chart")
     private String chart;
@@ -36,22 +29,6 @@ public class Solution {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getHomeworkId() {
-        return homeworkId;
-    }
-
-    public void setHomeworkId(Integer homeworkId) {
-        this.homeworkId = homeworkId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
     }
 
     public String getChart() {

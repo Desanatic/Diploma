@@ -1,7 +1,6 @@
 package com.khai.training.controller.post.old;
 
 import com.khai.training.bean.HomeworkBean;
-import com.khai.training.bean.constructor.HomeWorkBeanConstructor;
 import com.khai.training.entity.util.HomeworkState;
 import com.khai.training.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ import java.util.List;
  */
 @Controller
 public class InitialUserTasksController {
-    @Autowired
+   /* @Autowired
     private HomeWorkBeanConstructor homeWorkConstructorBean;
 
     //ToDo
@@ -47,5 +46,5 @@ public class InitialUserTasksController {
         response.setStatus(HttpServletResponse.SC_OK);
 
         return homeworkBeans;
-    }
+    }*/
 }

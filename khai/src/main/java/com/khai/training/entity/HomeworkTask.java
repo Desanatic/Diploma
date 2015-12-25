@@ -16,12 +16,6 @@ public class HomeworkTask {
     @GeneratedValue
     private Integer id;
 
-    @Column(name = "homework_id")
-    private Integer homeworkId;
-
-    @Column(name = "user_id")
-    private Integer userId;
-
     @Column(name = "chart")
     private String chart;
 
@@ -38,22 +32,6 @@ public class HomeworkTask {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getHomeworkId() {
-        return homeworkId;
-    }
-
-    public void setHomeworkId(Integer homeworkId) {
-        this.homeworkId = homeworkId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
     }
 
     public String getChart() {

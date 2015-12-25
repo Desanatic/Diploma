@@ -2,10 +2,11 @@ package com.khai.training.controller.get;
 
 import com.khai.training.bean.SolutionBean;
 import com.khai.training.bean.TaskBean;
-import com.khai.training.bean.constructor.SolutionBeanConstructor;
-import com.khai.training.bean.constructor.TaskBeanConstructor;
+import com.khai.training.entity.User;
+import com.khai.training.repository.manager.RepositoryManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,9 +20,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class UserHomeworkController {
+    //ToDo Смерть приложухи при обновлении страницы
     @Autowired
-    private SolutionBeanConstructor solutionBeanConstructor;
-    private TaskBeanConstructor taskBeanConstructor;
+    private RepositoryManager repositoryManager;
 
     @RequestMapping(value = "home_work", method = RequestMethod.GET)
     public String getPage() {
@@ -29,20 +30,22 @@ public class UserHomeworkController {
     }
 
     @RequestMapping(value = "/initial/user.task", method = RequestMethod.POST)
-    public @ResponseBody
-    TaskBean initialTask(HttpServletResponse response, @RequestParam int id) {
-        TaskBean taskBean = taskBeanConstructor.get(id);
-        System.out.println(taskBean);
+    public
+    @ResponseBody
+    TaskBean initialTask(HttpServletResponse response, HttpServletRequest request, @RequestParam int id) {
+        User user = (User) request.getSession().getAttribute("user");
+        TaskBean taskBean = repositoryManager.getTaskBeanById(user.getId(), id);
         response.addHeader("contentType", "application/json");
         response.setStatus(HttpServletResponse.SC_OK);
         return taskBean;
     }
 
     @RequestMapping(value = "/initial/user.solution", method = RequestMethod.POST)
-    public @ResponseBody
-    SolutionBean initialSolution(HttpServletResponse response, @RequestParam int id) {
-        SolutionBean solutionBean = solutionBeanConstructor.get(id);
-        System.out.println(solutionBean);
+    public
+    @ResponseBody
+    SolutionBean initialSolution(HttpServletResponse response, HttpServletRequest request, @RequestParam int id) {
+        User user = (User) request.getSession().getAttribute("user");
+        SolutionBean solutionBean = repositoryManager.getSolutionBeanById(user.getId(), id);
         response.addHeader("contentType", "application/json");
         response.setStatus(HttpServletResponse.SC_OK);
         return solutionBean;

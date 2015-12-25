@@ -26,6 +26,9 @@ public class UserHomeWork {
     @Column(name = "training_id")
     private Integer trainingId;
 
+    @Column(name = "solution_id")
+    private Integer solutionId;
+
     public Integer getId() {
         return id;
     }
@@ -64,5 +67,13 @@ public class UserHomeWork {
 
     public void setHomeworkTaskId(Integer homeworkTaskId) {
         this.homeworkTaskId = homeworkTaskId;
+    }
+
+    public Integer getSolutionId() {
+        return solutionId;
+    }
+
+    public void setSolutionId(Integer solutionId) {
+        this.solutionId = solutionId;
     }
 }

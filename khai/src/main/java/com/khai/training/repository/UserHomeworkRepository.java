@@ -21,7 +21,7 @@ public class UserHomeworkRepository {
     private SessionFactory sessionFactory;
 
     public List<UserHomeWork> listAll(){
-        return this.sessionFactory.getCurrentSession().createQuery("from UserHomeWork").list();
+        return this.sessionFactory.getCurrentSession().createQuery("from UserHomeWorkBean").list();
     }
 
     public List<UserHomeWork> getByUserId(Integer userId){
