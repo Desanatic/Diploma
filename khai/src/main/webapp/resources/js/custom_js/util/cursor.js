@@ -1,8 +1,8 @@
 function Cursor() {}
 
-Cursor.change = function (className){
+Cursor.change = function (){
 	$("html,body").mouseover(function (event) {
-		if($(event.target).hasClass(className)){
+		if($(event.target).hasClass("checkCursor")){
 			$('html,body').css('cursor','pointer');
 		}else{
 			$('html,body').css('cursor','default');
@@ -10,9 +10,9 @@ Cursor.change = function (className){
 	});
 }
 	
-Cursor.parentChange = function (className){
+Cursor.parentChange = function (){
 	$("html,body").mouseover(function (event) {
-		if($(event.target).parent().hasClass(className)){
+		if($(event.target).parent().hasClass("checkCursor")){
 			$('html,body').css('cursor','pointer');
 		}else{
 			$('html,body').css('cursor','default');

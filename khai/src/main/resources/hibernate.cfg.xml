@@ -11,6 +11,6 @@
         <mapping class = "com.khai.training.entity.Training"></mapping>
         <mapping class = "com.khai.training.entity.User"></mapping>
         <mapping class = "com.khai.training.entity.UserHomeWork"></mapping>
-
+        <mapping class = "com.khai.training.entity.Teacher"></mapping>
     </session-factory>
 </hibernate-configuration>

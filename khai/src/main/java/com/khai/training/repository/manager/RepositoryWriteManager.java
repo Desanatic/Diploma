@@ -25,16 +25,25 @@ public class RepositoryWriteManager {
     @Autowired
     private SolutionRepository solutionRepository;
 
-    public void updateTask(int id, String chart, String task){
-        UserHomeWork userHomeWork = userHomeworkRepository.getByTaskId(id);
+
+
+    public void updateTask(int homeWorkId, String chart, String task){
+        UserHomeWork userHomeWork = userHomeworkRepository.getByTaskId(homeWorkId);
         HomeworkTask homeworkTask = homeworkTaskRepository.get(userHomeWork.getHomeworkTaskId());
-        homeworkTask.setChart(chart);
-        homeworkTask.setTask(task);
-        homeworkTaskRepository.update(homeworkTask);
+        if(homeworkTask != null){
+            homeworkTask.setChart(chart);
+            homeworkTask.setTask(task);
+            homeworkTaskRepository.update(homeworkTask);
+        }else {
+            //ToDo
+            homeworkTask = new HomeworkTask();
+
+        }
+
     }
 
-    public void updateSolution(int id, String chart, String decision){
-        UserHomeWork userHomeWork = userHomeworkRepository.getBySolutionId(id);
+    public void updateSolution(int homeWorkId, String chart, String decision){
+        UserHomeWork userHomeWork = userHomeworkRepository.getBySolutionId(homeWorkId);
         Solution solution = solutionRepository.get(userHomeWork.getSolutionId());
         solution.setChart(chart);
         solution.setDecision(decision);

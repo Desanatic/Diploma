@@ -50,4 +50,13 @@ public class UserHomeworkRepository {
         }
         return new ArrayList<>();
     }
+
+    public List<UserHomeWork> getByTrainingId(Integer trainingId){
+        Criteria crit = sessionFactory.getCurrentSession().createCriteria(UserHomeWork.class);
+        crit.add(Restrictions.eq("trainingId", trainingId));
+        if(!crit.list().isEmpty()){
+            return crit.list();
+        }
+        return new ArrayList<>();
+    }
 }

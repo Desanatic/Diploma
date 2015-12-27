@@ -161,6 +161,8 @@
 <script src="/resources/js/jquery.ui.map.min.js"></script>
 <script src="/resources/js/scripts.js"></script>
 
+<script src="/resources/js/custom_js/util/user/user_util.js"></script>
 <script src="/resources/js/custom_js/active/login_modal.js"></script>
+
 </body>
 </html>

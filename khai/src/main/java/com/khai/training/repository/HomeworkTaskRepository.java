@@ -20,7 +20,11 @@ public class HomeworkTaskRepository {
     private SessionFactory sessionFactory;
 
     public HomeworkTask get(Integer id){
-        return  (HomeworkTask) sessionFactory.openSession().get(HomeworkTask.class, id);
+        Object hwt = sessionFactory.openSession().get(HomeworkTask.class, id);
+        if(hwt != null){
+            return  (HomeworkTask) hwt;
+        }
+       return null;
     }
 
 

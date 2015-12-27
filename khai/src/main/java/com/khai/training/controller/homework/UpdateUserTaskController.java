@@ -6,6 +6,7 @@ import com.khai.training.entity.Homework;
 import com.khai.training.entity.HomeworkTask;
 import com.khai.training.repository.HomeworkRepository;
 import com.khai.training.repository.HomeworkTaskRepository;
+import com.khai.training.repository.manager.RepositoryReadManager;
 import com.khai.training.repository.manager.RepositoryWriteManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,16 +27,13 @@ public class UpdateUserTaskController {
     @Autowired
     private RepositoryWriteManager repositoryWriteManager;
     @Autowired
-    private HomeworkRepository repository;
-    @Autowired
-    private HomeworkTaskRepository homeworkTaskRepository;
+    private RepositoryReadManager repositoryReadManager;
 
     @RequestMapping(value = "/update/task", method = RequestMethod.POST)
     public void initialTask(HttpServletResponse response,
                             @RequestParam String valueTask,
                             @RequestParam String valueChart,
                             @RequestParam int id) {
-
         repositoryWriteManager.updateTask(id, valueChart, valueTask);
         response.addHeader("contentType", "application/json");
         response.setStatus(HttpServletResponse.SC_OK);

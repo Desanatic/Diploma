@@ -35,9 +35,11 @@ public class RepositoryReadManager {
     private TrainingRepository trainingRepository;
     @Autowired
     private SolutionRepository solutionRepository;
+    @Autowired
+    private TeacherRepository teacherRepository;
 
-    public List<HomeworkBean> getHomeworkBeans(int userId) {
-        init(userId);
+    public List<HomeworkBean> getHomeworkBeansByStudent(int userId) {
+        initForUser(userId);
         List<HomeworkBean> homeworkBeans = new ArrayList<>();
         for (UserHomeWorkBean userHomeWorkBean : userHomeWorkBeanList) {
             homeworkBeans.add(BeanManager.HomeworkBean.adapt(
@@ -49,9 +51,30 @@ public class RepositoryReadManager {
         return homeworkBeans;
     }
 
+    public List<HomeworkBean> getHomeworkBeansByTeacher(int userId) {
+        List<HomeworkBean> homeworkBeans = new ArrayList<>();
+        List<Teacher> teachers = teacherRepository.getByUserId(userId);
+
+        if(teachers == null){
+            return homeworkBeans;
+        }
+
+        for(Teacher teacher : teachers){
+            initForTraining(teacher.getTrainingId());
+            for (UserHomeWorkBean userHomeWorkBean : userHomeWorkBeanList) {
+                homeworkBeans.add(BeanManager.HomeworkBean.adapt(
+                        userHomeWorkBean.getHomework(),
+                        userHomeWorkBean.getHomeworkTask(),
+                        userHomeWorkBean.getTraining(),
+                        userHomeWorkBean.getSolution()));
+            }
+        }
+        return homeworkBeans;
+    }
+
 
     public TaskBean getTaskBeanById(int userId, int taskId) {
-        init(userId);
+        initForUser(userId);
         for (UserHomeWorkBean userHomeWorkBean : userHomeWorkBeanList) {
             if (userHomeWorkBean.getHomeworkTask().getId() == taskId) {
                 return BeanManager.TaskBean.adapt(userHomeWorkBean.getHomeworkTask(), userHomeWorkBean.getTraining());
@@ -61,7 +84,7 @@ public class RepositoryReadManager {
     }
 
     public SolutionBean getSolutionBeanById(int userId, int taskId) {
-        init(userId);
+        initForUser(userId);
         for (UserHomeWorkBean userHomeWorkBean : userHomeWorkBeanList) {
             if (userHomeWorkBean.getHomeworkTask().getId() == taskId && userHomeWorkBean.getSolution() != null) {
                 return BeanManager.SolutionBean.adapt(userHomeWorkBean.getSolution());
@@ -70,17 +93,28 @@ public class RepositoryReadManager {
         return null;
     }
 
-    private void init(int userId) {
+    private void initForUser(int userId) {
         userHomeWorkBeanList = new ArrayList<>();
         for (UserHomeWork userHomeWork : userHomeworkRepository.getByUserId(userId)) {
-            UserHomeWorkBean userHomeWorkBean = new UserHomeWorkBean();
-            userHomeWorkBean.setId(userHomeWork.getId());
-            userHomeWorkBean.setUser(entityManager.adaptToUser().adapt(userHomeWork));
-            userHomeWorkBean.setHomework(entityManager.adaptToHomework().adapt(userHomeWork));
-            userHomeWorkBean.setHomeworkTask(entityManager.adaptToHomeworkTask().adapt(userHomeWork));
-            userHomeWorkBean.setTraining(entityManager.adaptToTraining().adapt(userHomeWork));
-            userHomeWorkBean.setSolution(entityManager.adaptToSolution().adapt(userHomeWork));
-            userHomeWorkBeanList.add(userHomeWorkBean);
+            userHomeWorkBeanList.add(adaptToUserHomeWorkBean(userHomeWork));
         }
+    }
+
+    private void initForTraining(int trainingId) {
+        userHomeWorkBeanList = new ArrayList<>();
+        for (UserHomeWork userHomeWork : userHomeworkRepository.getByTrainingId(trainingId)) {
+            userHomeWorkBeanList.add(adaptToUserHomeWorkBean(userHomeWork));
+        }
+    }
+
+    private UserHomeWorkBean adaptToUserHomeWorkBean(UserHomeWork userHomeWork){
+        UserHomeWorkBean userHomeWorkBean = new UserHomeWorkBean();
+        userHomeWorkBean.setId(userHomeWork.getId());
+        userHomeWorkBean.setUser(entityManager.adaptToUser().adapt(userHomeWork));
+        userHomeWorkBean.setHomework(entityManager.adaptToHomework().adapt(userHomeWork));
+        userHomeWorkBean.setHomeworkTask(entityManager.adaptToHomeworkTask().adapt(userHomeWork));
+        userHomeWorkBean.setTraining(entityManager.adaptToTraining().adapt(userHomeWork));
+        userHomeWorkBean.setSolution(entityManager.adaptToSolution().adapt(userHomeWork));
+        return userHomeWorkBean;
     }
 }

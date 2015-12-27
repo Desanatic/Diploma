@@ -15,9 +15,6 @@ public class Homework {
     @GeneratedValue
     private Integer id;
 
-    @Column(name = "training_id")
-    private Integer trainingId;
-
     @Column(name = "name")
     private String name;
 
@@ -30,14 +27,6 @@ public class Homework {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getTrainingId() {
-        return trainingId;
-    }
-
-    public void setTrainingId(Integer trainingId) {
-        this.trainingId = trainingId;
     }
 
     public String getName() {

@@ -3,8 +3,7 @@ jQuery(document).ready(function() {
 	$(".task-control").hide();
 	$("textarea#myTextArea").hide();
 
-	Cursor.change("edit-page");
-	Cursor.change("ok-edit-page");
+	Cursor.change();
 	
 	$(".edit-page").click(function () {
 		$("#editor").htmlcode($(".home-work-text").html());

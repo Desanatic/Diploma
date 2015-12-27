@@ -30,6 +30,12 @@
             </tr>
           </table>
         </div>
+        <div class="col-md-offset-5 col-sm-1">
+            <h5 class="checkCursor">
+              <i class="fa fa-pencil-square-o task-modal-btm"></i>
+            </h5>
+
+        </div>
 
         <div class="col-sm-12 about-us-text wow fadeInLeft">
           <table class="table current_tasks">
@@ -61,9 +67,36 @@
     </div>
   </div>
 
+  <!-- TASK MODAL -->
+  <div id="task-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Инспектор заданий</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <h5 id="title-box-in-task-modal">About Us</h5>
+            <div class="col-md-offset-3 col-sm-6" id="task-modal-body">
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-xs btn-default" id="task-add-chart">Назад</button>
+          <button type="button" class="btn btn-xs btn-default" >Дальше</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <!-- Javascript -->
   <script src="/resources/js/jquery-1.11.1.min.js"></script>
   <script src="/resources/js/custom_js/util/cursor.js"></script>
   <script src="/resources/js/custom_js/active/home_work_list_active.js"></script>
+  <script src="/resources/js/custom_js/active/task_modal.js"></script>
 </t:template>

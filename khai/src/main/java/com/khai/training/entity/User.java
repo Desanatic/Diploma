@@ -1,5 +1,7 @@
 package com.khai.training.entity;
 
+import com.khai.training.entity.util.UserRole;
+
 import javax.persistence.*;
 
 /**
@@ -22,8 +24,9 @@ public class User {
     @Column(name = "middle_name")
     private String middleName;
 
+    @Enumerated (value = EnumType.STRING)
     @Column(name = "role")
-    private String role;
+    private UserRole role;
 
     @Column(name = "password")
     private String password;
@@ -63,11 +66,11 @@ public class User {
         this.middleName = middleName;
     }
 
-    public String getRole() {
+    public UserRole getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(UserRole role) {
         this.role = role;
     }
 

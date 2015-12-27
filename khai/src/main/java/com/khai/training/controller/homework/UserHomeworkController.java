@@ -4,6 +4,7 @@ import com.khai.training.bean.SolutionBean;
 import com.khai.training.bean.TaskBean;
 import com.khai.training.entity.User;
 import com.khai.training.repository.manager.RepositoryReadManager;
+import com.khai.training.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,8 @@ public class UserHomeworkController {
     //ToDo Смерть приложухи при обновлении страницы
     @Autowired
     private RepositoryReadManager repositoryReadManager;
+    @Autowired
+    private UserUtil userUtil;
 
     @RequestMapping(value = "home_work", method = RequestMethod.GET)
     public String getPage() {
@@ -32,7 +35,7 @@ public class UserHomeworkController {
     public
     @ResponseBody
     TaskBean initialTask(HttpServletResponse response, HttpServletRequest request, @RequestParam int id) {
-        User user = (User) request.getSession().getAttribute("user");
+        User user = userUtil.setRequest(request).getUser();
         TaskBean taskBean = repositoryReadManager.getTaskBeanById(user.getId(), id);
         response.addHeader("contentType", "application/json");
         response.setStatus(HttpServletResponse.SC_OK);
@@ -43,7 +46,7 @@ public class UserHomeworkController {
     public
     @ResponseBody
     SolutionBean initialSolution(HttpServletResponse response, HttpServletRequest request, @RequestParam int id) {
-        User user = (User) request.getSession().getAttribute("user");
+        User user = userUtil.setRequest(request).getUser();
         SolutionBean solutionBean = repositoryReadManager.getSolutionBeanById(user.getId(), id);
         response.addHeader("contentType", "application/json");
         response.setStatus(HttpServletResponse.SC_OK);

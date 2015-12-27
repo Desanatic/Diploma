@@ -2,10 +2,8 @@ package com.khai.training.util.managers;
 
 import com.khai.training.bean.SolutionBean;
 import com.khai.training.bean.TaskBean;
-import com.khai.training.entity.Homework;
-import com.khai.training.entity.HomeworkTask;
-import com.khai.training.entity.Solution;
-import com.khai.training.entity.Training;
+import com.khai.training.bean.UserHomeWorkBean;
+import com.khai.training.entity.*;
 
 /**
  * Created by Vladyslav_Dubinin on 25.12.2015.

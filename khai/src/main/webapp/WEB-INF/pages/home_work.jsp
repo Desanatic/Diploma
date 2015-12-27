@@ -44,8 +44,8 @@
 
       <div class="row">
         <div class="col-sm-12">
-          <h5 class="task-edit-page"><i class="fa fa-pencil-square-o"></i></h5>
-          <h5 class="task-ok-edit-page"><i class="fa fa-check"></i></h5>
+          <h5 class="task-edit-page"><i class="fa fa-pencil-square-o checkCursor"></i></h5>
+          <h5 class="task-ok-edit-page"><i class="fa fa-check checkCursor"></i></h5>
         </div>
         <div id="task"></div>
         <div class="task-home-work-text"></div>
@@ -69,8 +69,8 @@
 
       <div class="row">
         <div class="col-sm-12">
-          <h5 class="edit-page"><i class="fa fa-pencil-square-o"></i></h5>
-          <h5 class="ok-edit-page"><i class="fa fa-check"></i></h5>
+          <h5 class="edit-page"><i class="fa fa-pencil-square-o checkCursor"></i></h5>
+          <h5 class="ok-edit-page"><i class="fa fa-check checkCursor"></i></h5>
         </div>
         <div id="solution"></div>
         <div class="home-work-text"></div>

@@ -1,7 +1,5 @@
 jQuery( window ).load(function() {
-	var role = $("#user").attr("role");
-
-	if(role != "student" && role != "teacher"){
+	if(!USER.isTeacher() && !USER.isUser()){
 		$('#myModal').modal('show');
 		$('div.modal-backdrop').unbind('click');
 	}
