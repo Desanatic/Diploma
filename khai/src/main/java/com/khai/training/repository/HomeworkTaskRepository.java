@@ -19,6 +19,11 @@ public class HomeworkTaskRepository {
     @Autowired
     private SessionFactory sessionFactory;
 
+    public Integer put(HomeworkTask homeworkTask ){
+        this.sessionFactory.getCurrentSession().save(homeworkTask);
+        return homeworkTask.getId();
+    }
+
     public HomeworkTask get(Integer id){
         Object hwt = sessionFactory.openSession().get(HomeworkTask.class, id);
         if(hwt != null){

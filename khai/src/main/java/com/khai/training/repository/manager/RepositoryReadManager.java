@@ -20,6 +20,7 @@ import java.util.List;
  */
 @Component
 public class RepositoryReadManager {
+    //ToDo оптимизируй!!!!!
     private List<UserHomeWorkBean> userHomeWorkBeanList;
     @Autowired
     private EntityManager entityManager;
@@ -49,6 +50,16 @@ public class RepositoryReadManager {
                     userHomeWorkBean.getSolution()));
         }
         return homeworkBeans;
+    }
+
+    public List<Homework> getHomeworkByTraining(int trainingId){
+        List<Homework> homework = new ArrayList<>();
+        for (UserHomeWorkBean userHomeWorkBean : userHomeWorkBeanList) {
+            if(userHomeWorkBean.getTraining().getId().equals(trainingId)){
+                homework.add(userHomeWorkBean.getHomework());
+            }
+        }
+        return homework;
     }
 
     public List<HomeworkBean> getHomeworkBeansByTeacher(int userId) {

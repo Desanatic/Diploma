@@ -79,7 +79,6 @@ public class HomeworkBean{
         this.state = state;
     }
 
-
     public Date getDateOfDelivery() {
         return dateOfDelivery;
     }

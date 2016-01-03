@@ -30,11 +30,15 @@
             </tr>
           </table>
         </div>
-        <div class="col-md-offset-5 col-sm-1">
-            <h5 class="checkCursor">
-              <i class="fa fa-pencil-square-o task-modal-btm"></i>
+        <div class="col-md-offset-2 col-sm-2">
+          <h5 class="checkCursor home-work-modal-btm" >
+            <i class="fa fa-pencil-square-o"> Добавить работу</i>
+          </h5>
+        </div>
+        <div class=" col-sm-2">
+            <h5 class="checkCursor task-modal-btm" >
+              <i class="fa fa-pencil-square-o"> Добавить задание</i>
             </h5>
-
         </div>
 
         <div class="col-sm-12 about-us-text wow fadeInLeft">
@@ -86,8 +90,8 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-xs btn-default" id="task-add-chart">Назад</button>
-          <button type="button" class="btn btn-xs btn-default" >Дальше</button>
+          <button type="button" class="btn btn-xs btn-default" id="back-btn">Назад</button>
+          <button type="button" class="btn btn-xs btn-default" id="sendResult" >Дальше</button>
         </div>
       </div>
     </div>

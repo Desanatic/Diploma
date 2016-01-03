@@ -24,6 +24,11 @@ public class UserHomeworkRepository {
         return this.sessionFactory.getCurrentSession().createQuery("from UserHomeWorkBean").list();
     }
 
+    public Integer put(UserHomeWork userHomeWork){
+        this.sessionFactory.getCurrentSession().save(userHomeWork);
+        return userHomeWork.getId();
+    }
+
     public UserHomeWork getByTaskId(Integer taskId){
         Criteria crit = sessionFactory.getCurrentSession().createCriteria(UserHomeWork.class);
         crit.add(Restrictions.eq("homeworkTaskId", taskId));

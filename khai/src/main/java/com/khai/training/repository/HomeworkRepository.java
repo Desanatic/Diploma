@@ -1,6 +1,7 @@
 package com.khai.training.repository;
 
 import com.khai.training.entity.Homework;
+import com.khai.training.entity.HomeworkTask;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -19,6 +20,15 @@ import java.util.List;
 public class HomeworkRepository {
     @Autowired
     private SessionFactory sessionFactory;
+
+    public Integer put(Homework homework ){
+        this.sessionFactory.getCurrentSession().save(homework);
+        return homework.getId();
+    }
+
+    public List<Homework> listAll(){
+        return this.sessionFactory.getCurrentSession().createQuery("from Homework").list();
+    }
 
     public Homework get(Integer id){
         Criteria crit = sessionFactory.getCurrentSession().createCriteria(Homework.class);

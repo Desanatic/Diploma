@@ -36,7 +36,7 @@ public class UserRepository {
         return null;
     }
 
-    public List<Proverb> listAll(){
+    public List<User> listAll(){
         return this.sessionFactory.getCurrentSession().createQuery("from User").list();
     }
 }
